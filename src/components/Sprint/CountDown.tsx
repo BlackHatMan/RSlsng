@@ -13,7 +13,6 @@ export const CountDown: React.FC<{ countdownFinished: () => void }> = ({ countdo
             setProgress((prevProgress) => {
                 if (prevProgress < 1) {
                     countdownFinished();
-                    return prevProgress;
                 }
                 return prevProgress - 1;
             });

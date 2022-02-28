@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { ICardData, IGetWords } from '../utils/alias';
 
-export const BASE_URL = process.env.REACT_APP_BASE_URL;
+export const BASE_URL = 'https://rslang2022.herokuapp.com';
 export interface IFormInput {
     email: string;
     password: string;
@@ -13,11 +13,9 @@ export interface IQueryParams {
     value?: number | string;
 }
 
-export const baseUrl = process.env.REACT_APP_BASE_URL;
-
 // Words
 export const getWords = async (data: IGetWords) => {
-    const response = await axios.get(`${baseUrl}/words?group=${data.group}&page=${data.page}`);
+    const response = await axios.get(`${BASE_URL}/words?group=${data.group}&page=${data.page}`);
     return response.data;
 };
 
@@ -29,7 +27,7 @@ export const myGetWords = async (level: string) => {
 
 export const createUserWord = async (word: ICardData, userId: string | undefined) => {
     await axios.post(
-        `${baseUrl}/users/${userId}/words/${word.id}`,
+        `${BASE_URL}/users/${userId}/words/${word.id}`,
         { difficulty: 'hard' },
         {
             headers: {
@@ -42,7 +40,7 @@ export const createUserWord = async (word: ICardData, userId: string | undefined
 export const deleteUserWord = async (word: ICardData, userId: string | undefined) => {
     await axios.delete(
         /* eslint no-underscore-dangle: [1, { "allow": ["__place"] }] */
-        `${baseUrl}/users/${userId}/words/${word._id}`,
+        `${BASE_URL}/users/${userId}/words/${word._id}`,
         {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -71,7 +69,7 @@ export const createUser = async (data: IFormInput) => {
 };
 
 export const getCurrentUser = async () => {
-    const response = await axios.get(`${baseUrl}/users/`, {
+    const response = await axios.get(`${BASE_URL}/users/`, {
         headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
@@ -108,7 +106,7 @@ axios.interceptors.response.use(
 // User/AggregatedWords
 export const getAllUserAggregatedWords = async (data: IGetWords) => {
     const filter = `{"$and":[{"userWord.difficulty":"hard", "group":${data.group}, "page":${data.page}}]}`;
-    const response = await axios.get(`${baseUrl}/users/${data.userId}/aggregatedWords`, {
+    const response = await axios.get(`${BASE_URL}/users/${data.userId}/aggregatedWords`, {
         headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
         },

@@ -4,7 +4,7 @@ import React, {
 
 import Grid from '@mui/material/Grid';
 
-import { baseUrl, createUserWord, deleteUserWord } from '../../core/api';
+import { BASE_URL, createUserWord, deleteUserWord } from '../../core/api';
 import { ICardData, ICardPropsData } from '../../utils/alias';
 import { CardItem } from '../Card/Card';
 import { MyContext } from '../../core/context';
@@ -44,7 +44,7 @@ export const CardList: React.FC<ICardPropsData> = ({ words, remove }) => {
 
         const playNext = () => {
             if (trackIndex < arr.length) {
-                const soundPath = `${baseUrl}/${arr[trackIndex]}`;
+                const soundPath = `${BASE_URL}/${arr[trackIndex]}`;
                 playAudio(soundPath);
                 trackIndex += 1;
             } else {

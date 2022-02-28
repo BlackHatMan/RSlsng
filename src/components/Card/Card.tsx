@@ -14,7 +14,7 @@ import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded';
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 import PauseCircleOutlineIcon from '@mui/icons-material/PauseCircleOutline';
 import { ICardProps } from '../../utils/alias';
-import { baseUrl } from '../../core/api';
+import { BASE_URL } from '../../core/api';
 import { MyContext } from '../../core/context';
 
 /* eslint-disable */
@@ -51,7 +51,7 @@ export const CardItem: React.FC<ICardProps> = ({
                         title={`${word.word} - ${word.transcription}`}
                         subheader={word.wordTranslate}
                     />
-                    <CardMedia component="img" height="194" image={`${baseUrl}/${word.image}`} alt="Paella dish" />
+                    <CardMedia component="img" height="194" image={`${BASE_URL}/${word.image}`} alt="Paella dish" />
                     <CardContent>
                         <Typography variant="body2">{myComponent(word.textMeaning)}</Typography>
                         <Typography variant="body2" color="text.secondary">
