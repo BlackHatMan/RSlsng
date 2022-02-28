@@ -69,9 +69,9 @@ export const createUser = async (data: IFormInput) => {
 };
 
 export const getCurrentUser = async () => {
-    const response = await axios.get(`${BASE_URL}/users/`, {
+    const response = await axios.get(`${BASE_URL}/users/${localStorage.getItem('id')}`, {
         headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
+            Authorization: `Bearer ${localStorage.getItem('id')}`,
         },
     });
 
@@ -96,8 +96,7 @@ axios.interceptors.response.use(
                     Authorization: `Bearer ${res.data.token}`,
                 },
             };
-            // eslint-disable-next-line no-return-await
-            return await axios(originalRequest);
+            return axios(originalRequest);
         }
         return Promise.reject(err);
     },

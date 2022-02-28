@@ -61,7 +61,13 @@ export interface IGetCurrentUser {
     name: string;
     id: string;
 }
-
+export interface ILoginResponse {
+    message: string;
+    name: string;
+    refreshToken: string;
+    token: string;
+    userId: string;
+}
 export interface ICreateUserWord {
     userId: string;
     wordId: string;

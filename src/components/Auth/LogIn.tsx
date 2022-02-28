@@ -7,29 +7,17 @@ import {
 } from '@mui/material';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 
-import { signIn, IFormInput, getCurrentUser } from '../../core/api';
+import { signIn, IFormInput } from '../../core/api';
 import './auth.css';
 import { MyContext } from '../../core/context';
-import { IGetCurrentUser } from '../../utils/alias';
+import { IGetCurrentUser, ILoginResponse } from '../../utils/alias';
 
-interface ILoginResponse {
-    message: string;
-    name: string;
-    refreshToken: string;
-    token: string;
-    userId: string;
-}
 export const LogIn: React.FC = () => {
     const [incorrectEmail, setIncorrectEmail] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [isWait, setWait] = useState(false);
     const navigation = useNavigate();
     const { setCurrentUser } = useContext(MyContext);
-
-    const getUser = async () => {
-        const user: IGetCurrentUser = await getCurrentUser();
-        setCurrentUser!(user);
-    };
 
     const handleClickShowPassword = () => {
         setShowPassword((prevState) => !prevState);
@@ -53,11 +41,9 @@ export const LogIn: React.FC = () => {
                 localStorage.setItem('refreshToken', loginResponse.refreshToken);
                 localStorage.setItem('id', loginResponse.userId);
                 setWait(false);
-                getUser()
-                    .then(() => {
-                        navigation('/');
-                    })
-                    .catch(() => console.log('User not found!'));
+                const user: IGetCurrentUser = { email: '', name: loginResponse.name, id: loginResponse.userId };
+                setCurrentUser!(user);
+                navigation('/');
             })
             .catch(() => {
                 setWait(false);
