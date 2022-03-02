@@ -1,22 +1,21 @@
 import React, { useState } from 'react';
-import { SprintNew } from './SprintNew';
 import { SelectLevel } from './SelectLevel';
-
 import { IPage } from '../../utils/alias';
-import './Sprint.css';
-/* eslint-disable */
+import { SprintGame } from './SprintGame';
+import './sprint.css';
+
 export const SprintContainer = () => {
     const [dataPage, setDataPage] = useState<IPage[]>([]);
     const [isClose, setClose] = useState(false);
-    const [ruList, setRuList] = React.useState<string[]>([]);
+    const [translateWord, setTranslateWord] = React.useState<string[]>([]);
 
     const handlerClose = () => {
         setClose(false);
     };
 
     const dataHandler = (data: IPage[]) => {
-        const ruList = data.map((el) => el.wordTranslate);
-        setRuList(ruList);
+        const ru = data.map((el) => el.wordTranslate);
+        setTranslateWord(ru);
         setDataPage(data);
         setClose(true);
     };
@@ -24,7 +23,7 @@ export const SprintContainer = () => {
     return (
         <div className="sprint">
             {isClose ? (
-                <SprintNew dataPage={dataPage} ruList={ruList} handlerClose={handlerClose} />
+                <SprintGame dataPage={dataPage} translateWord={translateWord} handlerClose={handlerClose} />
             ) : (
                 <SelectLevel dataHandler={dataHandler} />
             )}

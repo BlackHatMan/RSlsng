@@ -1,4 +1,9 @@
 export const style = {
+    countDownContainer: {
+        display: 'flex',
+        justifyContent: 'space-around',
+        padding: '20px 0px',
+    },
     modal: {
         position: 'absolute',
         top: '50%',
@@ -20,5 +25,11 @@ export const style = {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    red: {
+        color: '#ff3d47',
+    },
+    black: {
+        color: 'black',
     },
 };

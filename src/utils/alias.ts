@@ -2,6 +2,13 @@ export interface ICardPlay {
     cardId: string;
     flag: boolean;
 }
+
+export interface IResult {
+    word: string;
+    translateWord: string;
+    correct?: boolean;
+}
+
 export interface IPage {
     id: string;
     group: number;

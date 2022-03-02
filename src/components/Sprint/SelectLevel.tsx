@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-    Typography, FormControl, InputLabel, Select, MenuItem, Button,
+    Typography, FormControl, InputLabel, Select, MenuItem, Button, Box,
 } from '@mui/material';
 import { IPage } from '../../utils/alias';
 import { myGetWords } from '../../core/api';
@@ -10,7 +10,8 @@ export const SelectLevel: React.FC<{ dataHandler: (data: IPage[]) => void }> = (
 
     const handlerStart = async () => {
         const data = await myGetWords(level);
-        dataHandler(data);
+        const data2 = await myGetWords(level);
+        dataHandler([...data, ...data2]);
     };
 
     return (
@@ -18,14 +19,15 @@ export const SelectLevel: React.FC<{ dataHandler: (data: IPage[]) => void }> = (
             <Typography variant="h5" mt={8}>
                 «Спринт» - это тренировка для повторения заученных слов из вашего словаря.
             </Typography>
-            <Typography variant="subtitle1">Выберите уровень сложности</Typography>
+            <Typography variant="subtitle1" mb={2}>
+                Выберите уровень сложности
+            </Typography>
             <FormControl fullWidth sx={{ maxWidth: '300px' }}>
                 <InputLabel id="sprint-level-select-label">Уровень</InputLabel>
                 <Select
                     labelId="sprint-level-select-label"
-                    id="sprint-level-select"
                     value={level}
-                    label="Level"
+                    label="Уровень"
                     onChange={(event) => setLevel(event.target.value)}
                 >
                     <MenuItem value={0}>1</MenuItem>
@@ -36,11 +38,11 @@ export const SelectLevel: React.FC<{ dataHandler: (data: IPage[]) => void }> = (
                     <MenuItem value={5}>6</MenuItem>
                 </Select>
             </FormControl>
-            <div className="sprint_btn-container">
-                <Button variant="contained" color="primary" onClick={handlerStart}>
+            <Box mt={4}>
+                <Button variant="contained" disabled={level === ''} onClick={handlerStart}>
                     НАЧАТЬ
                 </Button>
-            </div>
+            </Box>
         </>
     );
 };

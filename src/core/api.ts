@@ -58,8 +58,10 @@ export const getNewToken = async () => {
             Authorization: `Bearer ${refreshToken}`,
         },
     });
-    localStorage.setItem('refreshToken', response.data.refreshToken);
-    localStorage.setItem('token', response.data.token);
+    if (response.status === 200) {
+        localStorage.setItem('refreshToken', response.data.refreshToken);
+        localStorage.setItem('token', response.data.token);
+    }
     return response;
 };
 
