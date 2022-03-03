@@ -7,7 +7,7 @@
   grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
   grid-column-gap: 1em;
   grid-row-gap: 1em;
-  padding: 7em 7em 5em 7em;
+  padding: 4em 7em 5em 7em;
   justify-items: center;
 }
 
@@ -102,7 +102,7 @@
     top: 80px;
     right: calc(10% - 100px);
   }
-  
+
   .App-logo {
     top:calc(25% - 35px);
     right: calc(10% - 95px);
@@ -112,6 +112,7 @@
 
   .wrapper__slader_container {
     padding: calc(10% - 15px);
+    font-size: 1.4rem;
   }
 }
 
@@ -132,7 +133,7 @@
     top: 80px;
     right: calc(10% - 100px);
   }
-  
+
   .App-logo {
     top:calc(25% - 35px);
     right: calc(10% - 95px);
@@ -157,7 +158,7 @@
     top: 60px;
     right: calc(10% - 100px);
   }
-  
+
   .App-logo {
     top: 35px;
     right: calc(10% - 95px);

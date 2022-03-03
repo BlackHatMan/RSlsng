@@ -4,7 +4,7 @@ import './Manual.css';
 
 import { CardList, Groups, PaginationRounded } from '../../components';
 import { getAllUserAggregatedWords, getWords } from '../../core/api';
-import { ICardData, IGetCurrentUser } from '../../utils/alias';
+import { ICardData } from '../../utils/alias';
 import { MyContext } from '../../core/context';
 
 export const Manual: React.FC = () => {
