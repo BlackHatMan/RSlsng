@@ -35,7 +35,7 @@ export const AudioContainer = () => {
     };
 
     return (
-        <Container sx={{ marginTop: '100px' }}>
+        <Container sx={{ marginTop: '50px' }}>
             {showResult && <GameResult result={result} />}
             {isChoice && <AudioLevel levelHandler={levelHandler} />}
             {!isChoice && !showGame && !showResult && (

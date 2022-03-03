@@ -17,7 +17,7 @@ export const GameResult: React.FC<{ result: IResult[] }> = ({ result }) => (
         </Typography>
         <Box
             sx={{
-                maxHeight: '600px',
+                maxHeight: '450px',
                 overflowY: 'scroll',
                 '&::-webkit-scrollbar': {
                     width: '0.5em',
