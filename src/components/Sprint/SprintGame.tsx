@@ -8,28 +8,40 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { CountDown } from './CountDown';
 import { style } from './style';
 import { IPage, IResult } from '../../utils/alias';
+import { BASE_URL } from '../../core/api';
 
-export const SprintGame: React.FC<{ dataPage: IPage[]; translateWord: string[]; handlerClose: () => void }> = ({
-    handlerClose,
-    translateWord,
-    dataPage,
+export const SprintGame: React.FC<{
+    dataPage: IPage[];
+    translateWords: string[];
+    handlerClose: () => void;
+    handlerResultData: (res: IResult[]) => void;
+}> = ({
+    handlerClose, translateWords, dataPage, handlerResultData,
 }) => {
     const [countLive, setCountLive] = useState(5);
     const [current, setCurrent] = useState(0);
     const [word, setWord] = useState<string>('');
     const [offerWord, setOfferWord] = React.useState('');
     const [result] = useState<IResult[]>([]);
-    const res: IResult = { word, translateWord: dataPage[current].wordTranslate };
+
+    const res: IResult = {
+        word,
+        wordTranslate: dataPage[current].wordTranslate,
+        audio: `${BASE_URL}/${dataPage[current].audio}`,
+        transcription: dataPage[current].transcription,
+    };
 
     useEffect(() => {
-        const rndRuWord = translateWord[Math.floor(Math.random() * dataPage.length)];
+        if (countLive === 0) handlerClose();
+        const rndRuWord = translateWords[Math.floor(Math.random() * dataPage.length)];
         const offer = Math.floor(Math.random() * 100) % 2 ? dataPage[current].wordTranslate : rndRuWord;
         setWord(dataPage[current].word);
         setOfferWord(offer);
     }, [current]);
+
     useEffect(
         () => () => {
-            console.log(result);
+            handlerResultData(result);
         },
         [],
     );

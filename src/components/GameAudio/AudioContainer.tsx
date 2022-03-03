@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 import { Container } from '@mui/material';
-import AudioGame, { resultGame } from './AudioGame';
+import AudioGame from './AudioGame';
 import AudioLevel from './AudioLevel';
-import AudioResults from './AudioResults';
 import './audioGame.css';
-import { IPage } from '../../utils/alias';
+import { IPage, IResult } from '../../utils/alias';
 import { getWords } from '../../core/api';
+import { GameResult } from '../GameResult';
 
 export const AudioContainer = () => {
     const [data, setData] = useState<IPage[]>([]);
     const [wordsRu, setWordsRu] = useState<string[]>([]);
     const [isChoice, setChoice] = useState<boolean>(true);
-    const [result, setResult] = useState<resultGame[]>([]);
+    const [result, setResult] = useState<IResult[]>([]);
     const [showResult, setShowResult] = useState<boolean>(false);
     const [showGame, setShowGame] = useState<boolean>(false);
 
@@ -28,15 +28,15 @@ export const AudioContainer = () => {
         });
     };
 
-    const resultCallBack = (resultData: resultGame[]) => {
+    const resultCallBack = (resultData: IResult[]) => {
         setResult(resultData);
         setShowResult(true);
         setShowGame(false);
     };
 
     return (
-        <Container>
-            {showResult && <AudioResults result={result} />}
+        <Container sx={{ marginTop: '100px' }}>
+            {showResult && <GameResult result={result} />}
             {isChoice && <AudioLevel levelHandler={levelHandler} />}
             {!isChoice && !showGame && !showResult && (
                 <CircularProgress sx={{ position: 'fixed', top: '45%', left: '50%' }} />

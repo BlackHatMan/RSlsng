@@ -5,7 +5,9 @@ export interface ICardPlay {
 
 export interface IResult {
     word: string;
-    translateWord: string;
+    wordTranslate: string;
+    audio: string;
+    transcription: string;
     correct?: boolean;
 }
 

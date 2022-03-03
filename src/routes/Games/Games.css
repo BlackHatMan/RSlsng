@@ -1,5 +1,4 @@
 .games{
-  padding-top: 150px;
   height: calc(100vh - 140px);
   display: flex;
   flex-direction: column;

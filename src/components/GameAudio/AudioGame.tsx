@@ -10,7 +10,7 @@ import VolumeUpIcon from './VolumeUpIcon';
 import ProgressGame from './ProgressGame';
 import { BASE_URL } from '../../core/api';
 import { Arrow } from './Arrow';
-import { IPage } from '../../utils/alias';
+import { IPage, IResult } from '../../utils/alias';
 
 export interface resultGame {
     word: string;
@@ -20,7 +20,7 @@ export interface resultGame {
 const AudioGame: React.FC<{
     data: IPage[];
     wordsRu: string[];
-    resultCallBack: (data: resultGame[]) => void;
+    resultCallBack: (result: IResult[]) => void;
 }> = ({ data, wordsRu, resultCallBack }) => {
     const progressColor = new Array(data.length).fill('grey');
     const [isError, setError] = useState(false);
@@ -31,7 +31,7 @@ const AudioGame: React.FC<{
     const [rndAnswer, setRndAnswer] = useState<Array<string | undefined>>([]);
     const [isColorProgress] = useState(progressColor);
     const currentPage: IPage = data[position];
-    const [result] = useState<resultGame[]>([]);
+    const [result] = useState<IResult[]>([]);
 
     useEffect(() => {
         const rnd = rand(position, wordsRu);
@@ -40,9 +40,11 @@ const AudioGame: React.FC<{
         audio.play();
     }, [position]);
 
-    const res = {
+    const res: IResult = {
         word: currentPage.word,
-        answer: false,
+        wordTranslate: currentPage.wordTranslate,
+        transcription: currentPage.transcription,
+        correct: false,
         audio: `${BASE_URL}/${currentPage.audio}`,
     };
 
@@ -50,7 +52,7 @@ const AudioGame: React.FC<{
         if (!isAnswer) {
             if (el === currentPage.wordTranslate) {
                 isColorProgress[position] = 'green';
-                res.answer = true;
+                res.correct = true;
                 result.push(res);
                 setError(false);
             } else {

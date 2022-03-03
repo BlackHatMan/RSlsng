@@ -1,32 +1,44 @@
 import React, { useState } from 'react';
 import { SelectLevel } from './SelectLevel';
-import { IPage } from '../../utils/alias';
+import { IPage, IResult } from '../../utils/alias';
 import { SprintGame } from './SprintGame';
-import './sprint.css';
+import { GameResult } from '../GameResult';
+
+require('./sprint.css');
 
 export const SprintContainer = () => {
-    const [dataPage, setDataPage] = useState<IPage[]>([]);
     const [isClose, setClose] = useState(false);
-    const [translateWord, setTranslateWord] = React.useState<string[]>([]);
+    const [isEnd, setEnd] = useState(false);
+    const [dataPage, setDataPage] = useState<IPage[]>([]);
+    const [translateWords, setTranslateWords] = React.useState<string[]>([]);
+    const [result, setResult] = useState<IResult[]>([]);
 
     const handlerClose = () => {
         setClose(false);
     };
-
+    const handlerResultData = (res: IResult[]) => {
+        setResult(res);
+        setEnd(true);
+    };
     const dataHandler = (data: IPage[]) => {
         const ru = data.map((el) => el.wordTranslate);
-        setTranslateWord(ru);
+        setTranslateWords(ru);
         setDataPage(data);
         setClose(true);
     };
 
     return (
         <div className="sprint">
-            {isClose ? (
-                <SprintGame dataPage={dataPage} translateWord={translateWord} handlerClose={handlerClose} />
-            ) : (
-                <SelectLevel dataHandler={dataHandler} />
+            {!isClose && !isEnd && <SelectLevel dataHandler={dataHandler} />}
+            {isClose && (
+                <SprintGame
+                    dataPage={dataPage}
+                    translateWords={translateWords}
+                    handlerClose={handlerClose}
+                    handlerResultData={handlerResultData}
+                />
             )}
+            {!isClose && isEnd && <GameResult result={result} />}
         </div>
     );
 };
