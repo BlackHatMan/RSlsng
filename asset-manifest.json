@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/rslang/static/css/main.ff894478.css",
+    "main.js": "/rslang/static/js/main.94e9fb0e.js",
+    "static/media/monkey-face.svg": "/rslang/static/media/monkey-face.06e77465b0f0a3132d3b.svg",
+    "static/media/rs_lang_background_2.svg": "/rslang/static/media/rs_lang_background_2.2c164e6fbd5fcac65832.svg",
+    "index.html": "/rslang/index.html",
+    "main.ff894478.css.map": "/rslang/static/css/main.ff894478.css.map",
+    "main.94e9fb0e.js.map": "/rslang/static/js/main.94e9fb0e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ff894478.css",
+    "static/js/main.94e9fb0e.js"
+  ]
+}
