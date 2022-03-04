@@ -2,9 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-
 import Button from '@mui/material/Button';
-
 import './MainPage.css';
 
 export const MainPage: React.FC = () => (

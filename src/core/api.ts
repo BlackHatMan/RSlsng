@@ -86,7 +86,7 @@ export const signIn = async (user: IFormInput) => {
     return response.data;
 };
 
-axios.interceptors.response.use(
+/* axios.interceptors.response.use(
     (config) => config,
     async (err) => {
         if (err.response.status === 401) {
@@ -102,7 +102,7 @@ axios.interceptors.response.use(
         }
         return Promise.reject(err);
     },
-);
+); */
 
 // User/AggregatedWords
 export const getAllUserAggregatedWords = async (data: IGetWords) => {

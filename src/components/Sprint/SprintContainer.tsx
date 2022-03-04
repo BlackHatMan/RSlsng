@@ -3,8 +3,7 @@ import { SelectLevel } from './SelectLevel';
 import { IPage, IResult } from '../../utils/alias';
 import { SprintGame } from './SprintGame';
 import { GameResult } from '../GameResult';
-
-require('./sprint.css');
+import './Sprint.css';
 
 export const SprintContainer = () => {
     const [isClose, setClose] = useState(false);

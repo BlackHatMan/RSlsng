@@ -1,7 +1,7 @@
 {
     "name": "rslang",
-    "version": "0.1.0",
-    "private": true,
+    "version": "0.1.1",
+    "homepage": "https://blackhatman.github.io/rslang",
     "dependencies": {
         "@emotion/react": "^11.7.1",
         "@emotion/styled": "^11.6.0",
@@ -18,6 +18,7 @@
         "@types/react": "^17.0.39",
         "@types/react-dom": "^17.0.11",
         "axios": "^0.25.0",
+        "gh-pages": "^3.2.3",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
         "react-hook-form": "^7.27.0",
@@ -43,6 +44,8 @@
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
         "eslint": "eslint .",

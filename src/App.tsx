@@ -25,7 +25,7 @@ export const App = () => {
 
     return (
         <MyContext.Provider value={context}>
-            <BrowserRouter>
+            <BrowserRouter basename="/rslang">
                 <div className="App">
                     <ResponsiveAppBar />
                     <Routes>
