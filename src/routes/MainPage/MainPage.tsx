@@ -9,10 +9,10 @@ export const MainPage: React.FC = () => (
     <div className="App">
         <div className="wrapper wrapper__mane_page">
             <div className="wrapper_animation">
-                <img src="/rslang_logo_colorfull-1.svg" alt="logo" className="App-logo_static" />
-                <img src="/rs_lang_background_yellow.svg" alt="logo" className="App-logo left yellow" />
-                <img src="/rs_lang_background_purple.svg" alt="logo" className="App-logo left " />
-                <img src="/rs_lang_background_blue.svg" alt="logo" className="App-logo slow" />
+                <img src="/rslang/rslang_logo_colorfull-1.svg" alt="logo" className="App-logo_static" />
+                <img src="/rslang/rs_lang_background_yellow.svg" alt="logo" className="App-logo left yellow" />
+                <img src="/rslang/rs_lang_background_purple.svg" alt="logo" className="App-logo left " />
+                <img src="/rslang/rs_lang_background_blue.svg" alt="logo" className="App-logo slow" />
             </div>
             <div className="wrapper_slider">
                 <Carousel>

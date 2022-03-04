@@ -52,7 +52,7 @@ export const ResponsiveAppBar = () => {
                 <Toolbar disableGutters>
                     <Typography variant="h6" noWrap component="div" sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}>
                         <Link to="/">
-                            <img src="/rslang_logo.svg" alt="RSLang" />
+                            <img src="/rslang/rslang_logo.svg" alt="RSLang" />
                         </Link>
                     </Typography>
 
@@ -101,7 +101,7 @@ export const ResponsiveAppBar = () => {
                         sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
                     >
                         <Link to="/">
-                            <img src="/rslang_logo.svg" alt="RSLang" />
+                            <img src="/rslang/rslang_logo.svg" alt="RSLang" />
                         </Link>
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
