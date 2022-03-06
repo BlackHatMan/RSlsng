@@ -1,7 +1,3 @@
-.App {
-  text-align: center;
-
-}
 .wrapper__mane_page{
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));

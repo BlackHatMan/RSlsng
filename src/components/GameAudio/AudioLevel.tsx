@@ -11,7 +11,8 @@ const AudioLevel: React.FC<{ levelHandler: (arg: number) => void }> = ({ levelHa
             sx={{
                 margin: '50px auto',
                 borderRadius: '10px',
-                width: 500,
+                maxWidth: 500,
+                width: '100%',
                 background: 'rgb(255 214 207 / 69%)',
             }}
         >

@@ -3,13 +3,13 @@
 import React, { useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-import { Container } from '@mui/material';
-import PageGame from './PageGame';
+import { Container, Typography } from '@mui/material';
+import AudioCard from './AudioCard';
 import rand from './shuffle';
 import VolumeUpIcon from './VolumeUpIcon';
 import ProgressGame from './ProgressGame';
 import { BASE_URL } from '../../core/api';
-import { Arrow } from './Arrow';
+import Arrow from './Arrow';
 import { IPage, IResult } from '../../utils/alias';
 
 export interface resultGame {
@@ -124,11 +124,8 @@ const AudioGame: React.FC<{
                 ))}
             </Stack>
             <Container sx={{ height: '300px', display: 'flex', justifyContent: 'center' }}>
-                {choiceWord !== '' ? (
-                    <PageGame page={currentPage} />
-                ) : (
-                    <VolumeUpIcon path={`${BASE_URL}/${currentPage.audio}`} width="150px" />
-                )}
+                {choiceWord && <AudioCard page={currentPage} />}
+                {!choiceWord && <VolumeUpIcon path={`${BASE_URL}/${currentPage.audio}`} width="150px" />}
             </Container>
             <Stack direction="row" spacing={2} alignItems="center" justifyContent="center">
                 {rndAnswer.map((el, idx) => {
@@ -138,11 +135,10 @@ const AudioGame: React.FC<{
                                 key={idx}
                                 variant="contained"
                                 value={el}
-                                size="large"
                                 color={isError ? 'error' : 'success'}
                                 onClick={() => handlerAnswer(el)}
                             >
-                                {`${idx + 1}. ${el}`}
+                                <Typography variant="body1">{`${idx + 1}.${el}`}</Typography>
                             </Button>
                         );
                     }
@@ -156,7 +152,7 @@ const AudioGame: React.FC<{
                                 color={isError ? 'success' : 'info'}
                                 onClick={() => handlerAnswer(el)}
                             >
-                                {`${idx + 1}. ${el}`}
+                                {`${idx + 1}.${el}`}
                             </Button>
                         );
                     }
@@ -170,7 +166,7 @@ const AudioGame: React.FC<{
                             disabled={isError || isAnswer}
                             onClick={() => handlerAnswer(el)}
                         >
-                            {`${idx + 1}. ${el}`}
+                            {`${idx + 1}.${el}`}
                         </Button>
                     );
                 })}
@@ -183,4 +179,4 @@ const AudioGame: React.FC<{
         </div>
     );
 };
-export default AudioGame;
+export default React.memo(AudioGame);

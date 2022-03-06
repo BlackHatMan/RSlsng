@@ -1,20 +1,13 @@
 import { Button } from '@mui/material';
-import React, { useLayoutEffect } from 'react';
+import React, { useEffect } from 'react';
 
 const VolumeUpIcon: React.FC<{ path: string; width: string }> = ({ path, width }) => {
-    const audio = new Audio(path);
-
+    let audio: HTMLAudioElement;
+    useEffect(() => () => audio.pause(), []);
     const handlerAudio = () => {
+        audio = new Audio(path);
         audio.play();
     };
-
-    useLayoutEffect(
-        () => () => {
-            audio.pause();
-        },
-        [],
-    );
-
     return (
         <Button>
             <svg onClick={handlerAudio} className="volume-up-icon" width={width} height="100%" viewBox="0 0 24 24">
@@ -27,4 +20,4 @@ const VolumeUpIcon: React.FC<{ path: string; width: string }> = ({ path, width }
         </Button>
     );
 };
-export default VolumeUpIcon;
+export default React.memo(VolumeUpIcon);

@@ -15,7 +15,7 @@ export const MainPage: React.FC = () => (
                 <img src="/rslang/rs_lang_background_blue.svg" alt="logo" className="App-logo slow" />
             </div>
             <div className="wrapper_slider">
-                <Carousel>
+                <Carousel showThumbs={false}>
                     <div className="wrapper__slader_container">
                         <h1 className="h1">RS Lang</h1>
                         <span className="text__about">
