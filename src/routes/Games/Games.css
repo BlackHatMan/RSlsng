@@ -1,14 +1,15 @@
-.games{
+.games {
   height: calc(100vh - 140px);
   padding-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: rgb(141, 198, 255, 0.2);
-
 }
-.conteiner_card {
-  display:flex;
+.container_card {
+  display: flex;
+  max-width: 800px;
+  width: 100%;
 }
 
 .cover {
@@ -16,24 +17,28 @@
   justify-content: center;
   align-items: center;
   height: 200px;
-  width: 400px;
+  width: 100%;
   font-size: 4rem;
   border-radius: 20px;
   margin: 15px;
 }
 
-.card_color1{
+.card_color1 {
   background-color: rgb(174, 74, 132, 0.5);
 }
 
-.card_color2{
+.card_color2 {
   background-color: rgb(87, 176, 57, 0.3);
 }
-
-.card_color3{
-  background-color: rgb(255, 237, 0, 0.25);
+@media screen and (max-width: 900px) {
+  .cover {
+    font-size: 3rem;
+    height: 150px;
+  }
 }
-
-.card_color4{
-  background-color: rgb(0, 160, 227, 0.8);
+@media screen and (max-width: 660px) {
+  .cover {
+    font-size: 2rem;
+    height: 100px;
+  }
 }

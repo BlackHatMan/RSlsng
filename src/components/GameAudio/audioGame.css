@@ -27,10 +27,15 @@
 .page--audiogame-image {
   border: 2px gray solid;
   border-radius: 10px;
+  height: 200px;
+  width:100%;
+  max-width: 300px;
 }
 .page--audiogame-text {
-  max-width: 300px;
-  margin: 0 5px;
+  justify-content: flex-start;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
 }
 .page--audiogame-transcription {
   margin-left: 5px;

@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-import { Container } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 import PageGame from './PageGame';
 import rand from './shuffle';
 import VolumeUpIcon from './VolumeUpIcon';
@@ -138,11 +138,10 @@ const AudioGame: React.FC<{
                                 key={idx}
                                 variant="contained"
                                 value={el}
-                                size="large"
                                 color={isError ? 'error' : 'success'}
                                 onClick={() => handlerAnswer(el)}
                             >
-                                {`${idx + 1}. ${el}`}
+                                <Typography variant="body1">{`${idx + 1}. ${el}`}</Typography>
                             </Button>
                         );
                     }

@@ -6,7 +6,7 @@ import './Games.css';
 export const Games: React.FC = () => (
     <div className="games">
         <h1>Игры</h1>
-        <div className="conteiner_card">
+        <div className="container_card">
             <div className="cover card_color1">
                 <Link to="audio">Аудиовызов</Link>
             </div>
