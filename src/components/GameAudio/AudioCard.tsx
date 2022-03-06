@@ -1,10 +1,10 @@
 import React from 'react';
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { BASE_URL } from '../../core/api';
 import VolumeUpIcon from './VolumeUpIcon';
 import { IPage } from '../../utils/alias';
 
-const PageGame: React.FC<{ page: IPage }> = ({ page }) => {
+const AudioCard: React.FC<{ page: IPage }> = ({ page }) => {
     const pathImg = `${BASE_URL}/${page.image}`;
     const pathAudio = `${BASE_URL}/${page.audio}`;
     const audioExample = `${BASE_URL}/${page.audioExample}`;
@@ -15,7 +15,9 @@ const PageGame: React.FC<{ page: IPage }> = ({ page }) => {
             <Box className="page--audiogame-text">
                 <div>
                     <VolumeUpIcon path={pathAudio} width="35px" />
-                    <span>{page.word}</span>
+                    <Typography variant="body1" component="span">
+                        {page.word}
+                    </Typography>
                     <em className="page--audiogame-transcription">{page.transcription}</em>
                 </div>
                 <div>
@@ -26,4 +28,4 @@ const PageGame: React.FC<{ page: IPage }> = ({ page }) => {
         </Box>
     );
 };
-export default PageGame;
+export default React.memo(AudioCard);
