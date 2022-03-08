@@ -116,7 +116,7 @@ export const LogIn: React.FC = () => {
             <h3>
                 Нет аккаунта?
                 {'  '}
-                <Link to="/auth">Создать</Link>
+                <Link to="/auth">создать</Link>
             </h3>
         </form>
     );

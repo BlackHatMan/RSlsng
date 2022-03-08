@@ -1,4 +1,4 @@
-.wrapper__mane_page{
+.wrapper__main_page {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
   grid-column-gap: 1em;
@@ -7,25 +7,25 @@
   justify-items: center;
 }
 
-.wrapper_animation{
+.wrapper_animation {
   position: relative;
 }
 
 .App-logo_static {
   position: absolute;
-  top:calc(33% - 25px);
+  top: calc(33% - 25px);
   right: calc(10% - 100px);
   z-index: 5;
 }
 
 .App-logo {
-  top:calc(25% - 35px);
+  top: calc(25% - 35px);
   right: calc(10% - 95px);
   position: absolute;
   pointer-events: none;
 }
 
-.yellow{
+.yellow {
   z-index: 4;
 }
 
@@ -34,7 +34,7 @@
     animation: App-logo-spin infinite 27s linear;
   }
   .left {
-    animation: App-logo-spin infinite 17s linear ;
+    animation: App-logo-spin infinite 17s linear;
     animation-direction: reverse;
   }
 
@@ -60,7 +60,7 @@
   width: 25%;
 }
 
-.carousel .control-dots .dot{
+.carousel .control-dots .dot {
   background: #07699e;
 }
 
@@ -69,7 +69,7 @@
   padding: 50px;
 }
 
-.h1{
+.h1 {
   color: #07699e;
 }
 
@@ -77,14 +77,14 @@
   padding: 10px 20px 20px 20px;
 }
 
-@media screen and (max-width: 1440px){
-  .wrapper__mane_page{
+@media screen and (max-width: 1440px) {
+  .wrapper__main_page {
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   }
 }
 
-@media screen and (max-width: 1040px){
-  .wrapper__mane_page{
+@media screen and (max-width: 1040px) {
+  .wrapper__main_page {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-row-gap: 12em;
   }
@@ -96,7 +96,7 @@
   }
 
   .App-logo {
-    top:calc(25% - 35px);
+    top: calc(25% - 35px);
     right: calc(10% - 95px);
     position: absolute;
     pointer-events: none;
@@ -108,20 +108,18 @@
   }
 }
 
-@media screen and (max-width: 840px){
-  .wrapper__mane_page{
+@media screen and (max-width: 840px) {
+  .wrapper__main_page {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-row-gap: 10em;
   }
-
   .App-logo_static {
     position: absolute;
     top: 60px;
     right: calc(10% - 100px);
     max-width: 120px;
   }
-
   .App-logo {
     top: 35px;
     right: calc(10% - 95px);
@@ -129,26 +127,21 @@
     pointer-events: none;
     max-width: 150px;
   }
-
   .wrapper__slider {
     padding: calc(15% - 60px);
     font-size: 1.3rem;
   }
-
-  .carousel .control-dots {
-    margin: 0;
+  .control-dots {
+    display: none;
   }
 }
 
-@media screen and ( max-width: 480px ) {
-  .wrapper__mane_page{
+@media screen and (max-width: 480px) {
+  .wrapper__main_page {
     margin: 1em;
   }
   .text__about {
     padding: 0;
     margin-top: 0;
-  }
-  .control-dots {
-    display: none;
   }
 }
