@@ -23,12 +23,3 @@ a:link {
   justify-content: center;
   background-color: #8fdd9c;
 }
-
-.wrapper__footer {
-  display: flex;
-  justify-content: space-around;
-  padding: 0 10px 0 10px;
-  flex-direction: row;
-  flex-wrap: wrap;
-  color: white;
-}
