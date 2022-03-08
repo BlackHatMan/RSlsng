@@ -112,13 +112,14 @@
   .wrapper__mane_page{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-row-gap: 21em;
+    grid-row-gap: 10em;
   }
 
   .App-logo_static {
     position: absolute;
     top: 60px;
     right: calc(10% - 100px);
+    max-width: 120px;
   }
 
   .App-logo {
@@ -126,6 +127,7 @@
     right: calc(10% - 95px);
     position: absolute;
     pointer-events: none;
+    max-width: 150px;
   }
 
   .wrapper__slider {
@@ -142,5 +144,11 @@
   .wrapper__mane_page{
     margin: 1em;
   }
-
+  .text__about {
+    padding: 0;
+    margin-top: 0;
+  }
+  .control-dots {
+    display: none;
+  }
 }

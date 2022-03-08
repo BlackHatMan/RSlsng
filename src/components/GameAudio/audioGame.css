@@ -7,6 +7,16 @@
   justify-content: center;
   padding: 50px 0px;
 }
+.game__answer {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+.page--audiogame-card {
+  display: flex;
+}
 .game-tittle {
   font-size: 3rem;
   font-weight: normal;
@@ -43,8 +53,21 @@
   margin-left: 5px;
   color: burlywood;
 }
-.game--answer-btn {
+.game__answer_accept {
   display: flex;
   justify-content: center;
   margin-top: 40px;
+}
+@media screen and ( max-width: 600px) {
+ .wrapper_audio {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+ }
+ .page--audiogame-card {
+   display: block;
+ }
+ .page--audiogame-text {
+   padding: 0;
+ }
 }

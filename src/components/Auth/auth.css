@@ -31,3 +31,9 @@
 .registration-toggle:hover {
   color: #bf1650;
 }
+
+@media screen and ( max-width: 600px) {
+  .authForm {
+    margin: 40px 5px;
+  }
+}

@@ -123,11 +123,11 @@ const AudioGame: React.FC<{
                     <ProgressGame key={i} color={el} />
                 ))}
             </Stack>
-            <Container sx={{ height: '300px', display: 'flex', justifyContent: 'center' }}>
+            <Container sx={{ display: 'flex', justifyContent: 'center' }}>
                 {choiceWord && <AudioCard page={currentPage} />}
                 {!choiceWord && <VolumeUpIcon path={`${BASE_URL}/${currentPage.audio}`} width="150px" />}
             </Container>
-            <Stack direction="row" spacing={2} alignItems="center" justifyContent="center">
+            <div className="game__answer">
                 {rndAnswer.map((el, idx) => {
                     if (el === choiceWord) {
                         return (
@@ -170,8 +170,8 @@ const AudioGame: React.FC<{
                         </Button>
                     );
                 })}
-            </Stack>
-            <div className="game--answer-btn">
+            </div>
+            <div className="game__answer_accept">
                 <Button variant="outlined" onClick={isAnswer ? next : skip}>
                     {isAnswer ? <Arrow /> : 'НЕ  ЗНАЮ'}
                 </Button>
