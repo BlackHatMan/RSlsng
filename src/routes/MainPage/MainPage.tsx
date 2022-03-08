@@ -16,20 +16,20 @@ export const MainPage: React.FC = () => (
             </div>
             <div className="wrapper_slider">
                 <Carousel showThumbs={false}>
-                    <div className="wrapper__slader_container">
+                    <div className="wrapper__slider">
                         <h1 className="h1">RS Lang</h1>
-                        <span className="text__about">
+                        <p className="text__about">
                             Изучай английский язык легко и увлекательно! Играя в мини-игры учи и запоминай слова. В
                             словаре находятся все слова, которые встречались в играх раньше. Повторяйте их каждый день
                             для закрепления результата.
-                        </span>
+                        </p>
                     </div>
-                    <div className="wrapper__slader_container">
+                    <div className="wrapper__slider">
                         <h1 className="h1">Наша команда</h1>
-                        <span className="text__about">
+                        <p className="text__about">
                             Мы Сергей, Виктор, Любомир и Ольга - команда js разработчиков в рамках курса Rolling Scopes
                             school представляем вам приложение для изучения английского языка.
-                        </span>
+                        </p>
                         <Link to="/team">
                             <Button size="medium" variant="outlined">
                                 Узнать больше

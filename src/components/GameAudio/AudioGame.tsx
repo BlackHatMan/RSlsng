@@ -138,7 +138,7 @@ const AudioGame: React.FC<{
                                 color={isError ? 'error' : 'success'}
                                 onClick={() => handlerAnswer(el)}
                             >
-                                <Typography variant="body1">{`${idx + 1}.${el}`}</Typography>
+                                {el}
                             </Button>
                         );
                     }
@@ -152,7 +152,7 @@ const AudioGame: React.FC<{
                                 color={isError ? 'success' : 'info'}
                                 onClick={() => handlerAnswer(el)}
                             >
-                                {`${idx + 1}.${el}`}
+                                {el}
                             </Button>
                         );
                     }
@@ -166,7 +166,7 @@ const AudioGame: React.FC<{
                             disabled={isError || isAnswer}
                             onClick={() => handlerAnswer(el)}
                         >
-                            {`${idx + 1}.${el}`}
+                            {el}
                         </Button>
                     );
                 })}

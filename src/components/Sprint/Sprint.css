@@ -1,6 +1,7 @@
 .sprint {
   max-width: 800px;
   margin: 50px auto;
+  text-align: center;
 }
 .sprint__card_img {
   margin: auto;

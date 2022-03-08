@@ -3,7 +3,14 @@ import React, { useEffect } from 'react';
 
 const VolumeUpIcon: React.FC<{ path: string; width: string }> = ({ path, width }) => {
     let audio: HTMLAudioElement;
-    useEffect(() => () => audio.pause(), []);
+
+    useEffect(
+        () => () => {
+            if (audio) audio.pause();
+        },
+        [],
+    );
+
     const handlerAudio = () => {
         audio = new Audio(path);
         audio.play();
