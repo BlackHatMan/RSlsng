@@ -30,14 +30,14 @@
   width: 15px;
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 800px) {
   .wrapper__team_page {
     grid-template-columns: repeat(2, 170px);
   }
 }
 
 @media screen and (max-width: 479px) {
-    .wrapper__team_page {
-      grid-template-columns: 170px;
+    .teams {
+      margin-top: 0;
     }
 }

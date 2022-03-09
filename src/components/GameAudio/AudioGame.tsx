@@ -1,9 +1,9 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable react/no-array-index-key */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-import { Container, Typography } from '@mui/material';
+import { Container } from '@mui/material';
 import AudioCard from './AudioCard';
 import rand from './shuffle';
 import VolumeUpIcon from './VolumeUpIcon';
@@ -32,14 +32,6 @@ const AudioGame: React.FC<{
     const [isColorProgress] = useState(progressColor);
     const currentPage: IPage = data[position];
     const [result] = useState<IResult[]>([]);
-
-    useEffect(() => {
-        const rnd = rand(position, wordsRu);
-        setRndAnswer(rnd);
-        const audio = new Audio(`${BASE_URL}/${currentPage.audio}`);
-        audio.play();
-    }, [position]);
-
     const res: IResult = {
         word: currentPage.word,
         wordTranslate: currentPage.wordTranslate,
@@ -47,6 +39,13 @@ const AudioGame: React.FC<{
         correct: false,
         audio: `${BASE_URL}/${currentPage.audio}`,
     };
+
+    useMemo(() => {
+        const rnd = rand(position, wordsRu);
+        setRndAnswer(rnd);
+        const audio = new Audio(`${BASE_URL}/${currentPage.audio}`);
+        audio.play();
+    }, [position]);
 
     const handlerAnswer = (el = '') => {
         if (!isAnswer) {
@@ -111,11 +110,9 @@ const AudioGame: React.FC<{
                 }
             }
         };
-
         window.document.addEventListener('keydown', handlerKeyboard);
         return () => window.document.removeEventListener('keydown', handlerKeyboard);
     }, [rndAnswer]);
-
     return (
         <div className="wrapper_audio">
             <Stack direction="row" justifyContent="center">

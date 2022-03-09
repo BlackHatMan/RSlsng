@@ -67,7 +67,19 @@
  .page--audiogame-card {
    display: block;
  }
+ .page--audiogame-image {
+   height: 175px;
+ }
  .page--audiogame-text {
    padding: 0;
+ }
+ .game__answer button {
+   font-size: 0.7rem;
+ }
+ .game__answer {
+  margin-top: 20px;
+ }
+ .game__answer_accept {
+   margin-top: 20px;
  }
 }
