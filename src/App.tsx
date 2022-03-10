@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route, HashRouter } from 'react-router-dom';
 
 import { getCurrentUser } from './core/api';
 import { MyContext } from './core/context';
@@ -25,7 +25,7 @@ export const App = () => {
 
     return (
         <MyContext.Provider value={context}>
-            <BrowserRouter basename="/rslang">
+            <HashRouter>
                 <div className="App">
                     <ResponsiveAppBar />
                     <Routes>
@@ -46,7 +46,7 @@ export const App = () => {
                     </Routes>
                     <Footer />
                 </div>
-            </BrowserRouter>
+            </HashRouter>
         </MyContext.Provider>
     );
 };

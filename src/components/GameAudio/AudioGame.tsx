@@ -176,4 +176,4 @@ const AudioGame: React.FC<{
         </div>
     );
 };
-export default React.memo(AudioGame);
+export default AudioGame;
