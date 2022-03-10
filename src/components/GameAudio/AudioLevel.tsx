@@ -9,7 +9,7 @@ const AudioLevel: React.FC<{ levelHandler: (arg: number) => void }> = ({ levelHa
     return (
         <Box
             sx={{
-                margin: '50px auto',
+                margin: '0 auto',
                 borderRadius: '10px',
                 maxWidth: 500,
                 width: '100%',

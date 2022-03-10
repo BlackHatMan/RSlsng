@@ -50,7 +50,7 @@ export const ResponsiveAppBar = () => {
         <AppBar position="static" color="inherit">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <Typography variant="h6" noWrap component="div" sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}>
+                    <Typography mr={2} sx={{ display: { xs: 'none', md: 'flex' } }}>
                         <Link to="/">
                             <img src="/rslang/rslang_logo.svg" alt="RSLang" />
                         </Link>
@@ -86,11 +86,11 @@ export const ResponsiveAppBar = () => {
                             }}
                         >
                             {pages.map((page) => (
-                                <MenuItem key={page.title} onClick={handleCloseNavMenu}>
-                                    <Link to={page.link}>
+                                <Link to={page.link}>
+                                    <MenuItem key={page.title} onClick={handleCloseNavMenu}>
                                         <Typography textAlign="center">{page.title}</Typography>
-                                    </Link>
-                                </MenuItem>
+                                    </MenuItem>
+                                </Link>
                             ))}
                         </Menu>
                     </Box>

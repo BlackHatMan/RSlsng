@@ -28,41 +28,32 @@ export const Footer = () => {
 
     return (
         <div className="footer">
-            <div className="wrapper__footer">
-                <div className="git_link">
-                    <a
-                        href="https://github.com/serguntchik/rslang-team-serguntchik/tree/develop"
+            <div className="git_link">
+                <a
+                    className="footer_link"
+                    href="https://github.com/serguntchik/rslang-team-serguntchik/tree/develop"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    Github
+                </a>
+                <span> © 2022</span>
+                <a className="footer_link" href="https://https://rs.school/" target="_blank" rel="noreferrer">
+                    RS School
+                </a>
+            </div>
+            <div className="git-link">
+                {team.map((member) => (
+                    <Button
+                        key={member.name}
+                        href={member.github}
                         target="_blank"
-                        rel="noreferrer"
-                        style={{ padding: '5px' }}
-                        className="footer_link"
+                        sx={{ my: 2, color: 'white', fontSize: matches ? '0.7rem' : '1rem' }}
+                        startIcon={<GitHubIcon />}
                     >
-                        Github
-                    </a>
-                    © 2022
-                    <a
-                        className="footer_link"
-                        href="https://https://rs.school/"
-                        target="_blank"
-                        rel="noreferrer"
-                        style={{ padding: '5px' }}
-                    >
-                        RS School
-                    </a>
-                </div>
-                <div className="git-link">
-                    {team.map((member) => (
-                        <Button
-                            key={member.name}
-                            href={member.github}
-                            target="_blank"
-                            sx={{ my: 2, color: 'white', fontSize: matches ? '0.7rem' : '1rem' }}
-                            startIcon={<GitHubIcon />}
-                        >
-                            {member.name}
-                        </Button>
-                    ))}
-                </div>
+                        {member.name}
+                    </Button>
+                ))}
             </div>
         </div>
     );

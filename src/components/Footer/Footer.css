@@ -1,34 +1,28 @@
 .footer{
   background-color: #1976d2;
-  width: 100%;
-  height: 70px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .git_link {
   display: flex;
   align-items: center;
+  color: aliceblue;
 }
 
 .footer_link {
   color: aliceblue;
+  margin: 0 15px;
 }
 
 .footer_link:hover {
   font-weight: 800;
 }
 
-.wrapper__footer {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  justify-content: space-around;
-  padding: 0 10px 0 10px;
-  flex-direction: row;
-  flex-wrap: wrap;
-  color: white;
-}
 .block_link {
   display: flex;
   align-items: center;
-  padding: 5px;
 }

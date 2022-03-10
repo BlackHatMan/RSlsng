@@ -35,13 +35,13 @@ export const AudioContainer = () => {
     };
 
     return (
-        <Container sx={{ marginTop: '50px' }}>
+        <div>
             {showResult && <GameResult result={result} />}
             {isChoice && <AudioLevel levelHandler={levelHandler} />}
             {!isChoice && !showGame && !showResult && (
                 <CircularProgress sx={{ position: 'fixed', top: '45%', left: '50%' }} />
             )}
             {showGame && <AudioGame data={data} wordsRu={wordsRu} resultCallBack={resultCallBack} />}
-        </Container>
+        </div>
     );
 };

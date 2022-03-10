@@ -1,5 +1,5 @@
 .wrapper_audio {
-  margin: 0 auto;
+  margin: 20px auto;
   max-width: 700px;
 }
 .page--audiogame {
@@ -60,9 +60,11 @@
 }
 @media screen and ( max-width: 600px) {
  .wrapper_audio {
+   margin-top: 10px;
    display: flex;
    flex-direction: column;
    justify-content: space-between;
+   max-width: 350px;
  }
  .page--audiogame-card {
    display: block;
