@@ -1,12 +1,11 @@
-.wrapper__main_page {
+.main__page {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+  grid-template-columns: 1fr 1fr;
   grid-column-gap: 1em;
   row-gap: 1rem;
   margin: 4rem 7rem;
   justify-items: center;
 }
-
 .wrapper_animation {
   position: relative;
 }
@@ -15,6 +14,7 @@
   position: absolute;
   top: calc(33% - 25px);
   right: calc(10% - 100px);
+  pointer-events: none;
   z-index: 5;
 }
 
@@ -52,10 +52,6 @@
   }
 }
 
-.wrapper__team {
-  width: 25%;
-}
-
 .carousel .control-dots .dot {
   background: #07699e;
 }
@@ -68,31 +64,18 @@
   color: #07699e;
 }
 
-@media screen and (max-width: 1440px) {
-  .wrapper__main_page {
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  }
-}
-
-@media screen and (max-width: 1040px) {
-  .wrapper__main_page {
+@media screen and (max-width: 960px) {
+  .main__page {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-row-gap: 12rem;
   }
-
   .App-logo_static {
-    position: absolute;
-    top: 80px;
     right: calc(10% - 100px);
   }
-
   .App-logo {
     top: calc(25% - 35px);
     right: calc(10% - 95px);
-    position: absolute;
-    pointer-events: none;
   }
-
   .wrapper__slider {
     padding: calc(10% - 15px);
     font-size: 1.4rem;
@@ -100,23 +83,20 @@
 }
 
 @media screen and (max-width: 840px) {
-  .wrapper__main_page {
+  .main__page {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: 1fr;
     grid-row-gap: 10rem;
     margin: 2rem 3rem;
   }
   .App-logo_static {
-    position: absolute;
-    top: 60px;
+    top: 70px;
     right: calc(10% - 100px);
     max-width: 120px;
   }
   .App-logo {
     top: 35px;
     right: calc(10% - 95px);
-    position: absolute;
-    pointer-events: none;
     max-width: 150px;
   }
   .wrapper__slider {
@@ -129,7 +109,7 @@
 }
 
 @media screen and (max-width: 480px) {
-  .wrapper__main_page {
+  .main__page {
     margin: 1rem;
   }
 }

@@ -7,15 +7,12 @@
   justify-content: center;
   padding: 50px 0px;
 }
-.game__answer {
+.audio__answer {
   margin-top: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 15px;
-}
-.page--audiogame-card {
-  display: flex;
 }
 .game-tittle {
   font-size: 3rem;
@@ -78,7 +75,7 @@
  .game__answer button {
    font-size: 0.7rem;
  }
- .game__answer {
+ .audio__answer {
   margin-top: 20px;
  }
  .game__answer_accept {

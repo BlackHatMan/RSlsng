@@ -2,10 +2,9 @@
 /* eslint-disable react/no-array-index-key */
 import React, { useEffect, useMemo, useState } from 'react';
 import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
-import { Container } from '@mui/material';
+import { Box } from '@mui/material';
 import AudioCard from './AudioCard';
-import rand from './shuffle';
+import shuffle from './shuffle';
 import VolumeUpIcon from './VolumeUpIcon';
 import ProgressGame from './ProgressGame';
 import { BASE_URL } from '../../core/api';
@@ -26,9 +25,9 @@ const AudioGame: React.FC<{
     const [isError, setError] = useState(false);
     // eslint-disable-next-line prefer-const
     let [isAnswer, setAnswer] = useState(false);
-    const [position, setPosition] = useState<number>(0);
-    const [choiceWord, setChoiceWord] = useState<string>('');
-    const [rndAnswer, setRndAnswer] = useState<Array<string | undefined>>([]);
+    const [position, setPosition] = useState(0);
+    const [choiceWord, setChoiceWord] = useState('');
+    const [rndAnswer, setRndAnswer] = useState<(string | undefined)[]>([]);
     const [isColorProgress] = useState(progressColor);
     const currentPage: IPage = data[position];
     const [result] = useState<IResult[]>([]);
@@ -41,7 +40,7 @@ const AudioGame: React.FC<{
     };
 
     useMemo(() => {
-        const rnd = rand(position, wordsRu);
+        const rnd = shuffle(position, wordsRu);
         setRndAnswer(rnd);
         const audio = new Audio(`${BASE_URL}/${currentPage.audio}`);
         audio.play();
@@ -59,24 +58,22 @@ const AudioGame: React.FC<{
                 setError(true);
                 result.push(res);
             }
-            isAnswer = true;
             setChoiceWord(el);
             setAnswer(true);
         }
     };
 
     const skip = () => {
-        setChoiceWord('a');
+        setChoiceWord('skipped');
         setError(true);
         setAnswer(true);
-        isAnswer = true;
         isColorProgress[position] = 'yellow';
         result.push(res);
     };
 
     const next = () => {
         setAnswer(false);
-        if (position === progressColor.length - 1) {
+        if (position === data.length - 1) {
             resultCallBack(result);
         }
         setError(false);
@@ -115,23 +112,21 @@ const AudioGame: React.FC<{
     }, [rndAnswer]);
     return (
         <div className="wrapper_audio">
-            <Stack direction="row" justifyContent="center">
-                {isColorProgress.map((el, i) => (
-                    <ProgressGame key={i} color={el} />
-                ))}
-            </Stack>
-            <Container sx={{ display: 'flex', justifyContent: 'center' }}>
-                {choiceWord && <AudioCard page={currentPage} />}
-                {!choiceWord && <VolumeUpIcon path={`${BASE_URL}/${currentPage.audio}`} width="150px" />}
-            </Container>
-            <div className="game__answer">
+            <ProgressGame isColorProgress={isColorProgress} />
+            <Box display="flex" justifyContent="center" mt={4}>
+                {choiceWord ? (
+                    <AudioCard page={currentPage} />
+                ) : (
+                    <VolumeUpIcon path={`${BASE_URL}/${currentPage.audio}`} width="200px" />
+                )}
+            </Box>
+            <div className="audio__answer">
                 {rndAnswer.map((el, idx) => {
                     if (el === choiceWord) {
                         return (
                             <Button
-                                key={idx}
+                                key={`${idx} ${el}`}
                                 variant="contained"
-                                value={el}
                                 color={isError ? 'error' : 'success'}
                                 onClick={() => handlerAnswer(el)}
                             >
@@ -142,9 +137,7 @@ const AudioGame: React.FC<{
                     if (el === currentPage.wordTranslate) {
                         return (
                             <Button
-                                key={idx}
-                                value={el}
-                                size="large"
+                                key={`${idx} ${el}`}
                                 variant="contained"
                                 color={isError ? 'success' : 'info'}
                                 onClick={() => handlerAnswer(el)}
@@ -155,10 +148,8 @@ const AudioGame: React.FC<{
                     }
                     return (
                         <Button
-                            key={idx}
-                            value={el}
+                            key={`${idx} ${el}`}
                             color="info"
-                            size="large"
                             variant="contained"
                             disabled={isError || isAnswer}
                             onClick={() => handlerAnswer(el)}
@@ -169,7 +160,7 @@ const AudioGame: React.FC<{
                 })}
             </div>
             <div className="game__answer_accept">
-                <Button variant="outlined" onClick={isAnswer ? next : skip}>
+                <Button sx={{ width: '150px' }} variant="outlined" onClick={isAnswer ? next : skip}>
                     {isAnswer ? <Arrow /> : 'НЕ  ЗНАЮ'}
                 </Button>
             </div>

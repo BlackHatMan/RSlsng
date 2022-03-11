@@ -5,8 +5,8 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Button from '@mui/material/Button';
 import './MainPage.css';
 
-export const MainPage: React.FC = () => (
-    <div className="wrapper__main_page">
+export const MainPage = () => (
+    <div className="main__page">
         <div className="wrapper_animation">
             <img src="/rslang/rslang_logo_colorfull-1.svg" alt="logo" className="App-logo_static" />
             <img src="/rslang/rs_lang_background_yellow.svg" alt="logo" className="App-logo left yellow" />

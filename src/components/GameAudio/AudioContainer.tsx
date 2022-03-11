@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
-import { Container } from '@mui/material';
 import AudioGame from './AudioGame';
 import AudioLevel from './AudioLevel';
 import './audioGame.css';

@@ -5,4 +5,4 @@ const Arrow = () => (
         <path d="M24 12l-12-9v5h-12v8h12v5l12-9z" />
     </svg>
 );
-export default React.memo(Arrow);
+export default Arrow;
