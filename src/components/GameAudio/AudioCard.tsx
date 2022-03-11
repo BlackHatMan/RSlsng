@@ -10,15 +10,15 @@ const AudioCard: React.FC<{ page: IPage }> = ({ page }) => {
     const audioExample = `${BASE_URL}/${page.audioExample}`;
 
     return (
-        <Box display="flex">
-            <img className="page--audiogame-image" src={pathImg} alt="" />
-            <Box className="page--audiogame-text">
+        <Box className="audiogame__card">
+            <img className="audiogame_image" src={pathImg} alt="" />
+            <Box className="audiogame_text">
                 <div>
                     <VolumeUpIcon path={pathAudio} width="35px" />
                     <Typography variant="body1" component="span">
                         {page.word}
                     </Typography>
-                    <em className="page--audiogame-transcription">{page.transcription}</em>
+                    <em className="audiogame_transcription">{page.transcription}</em>
                 </div>
                 <div>
                     <VolumeUpIcon width="35px" path={audioExample} />

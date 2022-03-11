@@ -60,6 +60,7 @@ const AudioGame: React.FC<{
             }
             setChoiceWord(el);
             setAnswer(true);
+            isAnswer = true;
         }
     };
 
@@ -67,6 +68,7 @@ const AudioGame: React.FC<{
         setChoiceWord('skipped');
         setError(true);
         setAnswer(true);
+        isAnswer = true;
         isColorProgress[position] = 'yellow';
         result.push(res);
     };
@@ -111,7 +113,7 @@ const AudioGame: React.FC<{
         return () => window.document.removeEventListener('keydown', handlerKeyboard);
     }, [rndAnswer]);
     return (
-        <div className="wrapper_audio">
+        <div className="wrapper__audiogame">
             <ProgressGame isColorProgress={isColorProgress} />
             <Box display="flex" justifyContent="center" mt={4}>
                 {choiceWord ? (
@@ -159,7 +161,7 @@ const AudioGame: React.FC<{
                     );
                 })}
             </div>
-            <div className="game__answer_accept">
+            <div className="audiogame_accept">
                 <Button sx={{ width: '150px' }} variant="outlined" onClick={isAnswer ? next : skip}>
                     {isAnswer ? <Arrow /> : 'НЕ  ЗНАЮ'}
                 </Button>
