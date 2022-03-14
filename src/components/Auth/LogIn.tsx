@@ -1,16 +1,20 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
-
 import {
-    Alert, Button, Container, IconButton, InputAdornment, Snackbar, TextField,
+    Alert, Button, IconButton, InputAdornment, Snackbar, TextField,
 } from '@mui/material';
+import { styled } from '@material-ui/core/styles';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
-
 import { signIn, IFormInput } from '../../core/api';
 import './auth.css';
 import { MyContext } from '../../core/context';
 import { IGetCurrentUser, ILoginResponse } from '../../utils/alias';
+
+const CssTextField = styled(TextField)({
+    width: '100%',
+    margin: '10px 0',
+});
 
 export const LogIn: React.FC = () => {
     const [incorrectEmail, setIncorrectEmail] = useState(false);
@@ -54,29 +58,31 @@ export const LogIn: React.FC = () => {
     return (
         <form className="authForm" onSubmit={handleSubmit(onSubmit)}>
             <h2>Войти</h2>
-            <TextField
-                id="outlined-basic-1"
+            <CssTextField
+                error={Boolean(errors.email)}
+                helperText={errors.email?.message}
+                id="outlined-basic-2"
                 label="Email"
                 variant="outlined"
                 required
-                style={{ margin: '10px 0px', width: '100%' }}
                 {...register('email', {
                     required: true,
-                    pattern:
+                    pattern: {
                         // eslint-disable-next-line max-len
-                        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                        value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                        message: 'incorrect email',
+                    },
                 })}
             />
-            {errors?.email && <p className="auth-error">{errors.email?.message || 'incorrect email'}</p>}
-
-            <TextField
-                id="outlined-basic-2"
+            <CssTextField
+                error={Boolean(errors.password)}
+                helperText={errors.password?.message}
+                id="outlined-basic-3"
                 label="Пароль"
                 variant="outlined"
                 type={showPassword ? 'text' : 'password'}
                 autoComplete="off"
                 required
-                style={{ margin: '10px 0px', width: '100%' }}
                 InputProps={{
                     endAdornment: (
                         <InputAdornment position="end">
@@ -91,14 +97,18 @@ export const LogIn: React.FC = () => {
                     minLength: { value: 9, message: 'min length 9 symbol' },
                 })}
             />
-            {errors?.password && <p className="auth-error">{errors.password?.message || 'incorrect password'}</p>}
 
             <Button
                 variant="outlined"
                 type="submit"
                 disabled={!isValid || isWait}
                 color="primary"
-                style={{ margin: '20px 0px', width: '100%' }}
+                style={{
+                    margin: '20px 0px',
+                    width: '100%',
+                    fontSize: 22,
+                    fontWeight: 'bolder',
+                }}
             >
                 Войти
             </Button>
@@ -116,7 +126,9 @@ export const LogIn: React.FC = () => {
             <h3>
                 Нет аккаунта?
                 {'  '}
-                <Link to="/auth">создать</Link>
+                <Link to="/auth" style={{ textDecoration: 'underline' }}>
+                    Создать
+                </Link>
             </h3>
         </form>
     );

@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
-
 import {
-    Button, Container, IconButton, InputAdornment, TextField,
+    Button, IconButton, InputAdornment, TextField,
 } from '@mui/material';
+import { styled } from '@material-ui/core/styles';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
-
 import { createUser, IFormInput } from '../../core/api';
 import './auth.css';
+
+const CssTextField = styled(TextField)({
+    width: '100%',
+    margin: '10px 0',
+});
 
 export const Authentication: React.FC = () => {
     const [isErrorLogin, setErrorLogin] = useState(true);
@@ -44,43 +48,44 @@ export const Authentication: React.FC = () => {
     return (
         <form className="authForm" onSubmit={handleSubmit(onSubmit)}>
             <h2>Зарегистрироваться</h2>
-
-            <TextField
-                id="outlined-basic-3"
+            <CssTextField
+                error={Boolean(errors.name)}
+                helperText={errors.name?.message}
+                id="outlined-basic-1"
                 label="Имя"
                 variant="outlined"
                 required
-                style={{ width: '100%' }}
                 {...register('name', {
                     required: true,
-                    minLength: { value: 3, message: 'min length 3 symbol' },
+                    minLength: { value: 3, message: 'min 3 symbol' },
                 })}
             />
-            {errors?.name && <p className="auth-error">{errors.name?.message || 'incorrect Name'}</p>}
-
-            <TextField
-                id="outlined-basic-1"
+            <CssTextField
+                error={Boolean(errors.email)}
+                helperText={errors.email?.message}
+                id="outlined-basic-2"
                 label="Email"
                 variant="outlined"
                 required
-                style={{ margin: '10px 0px', width: '100%' }}
+                autoComplete="on"
                 {...register('email', {
                     required: true,
-                    pattern:
+                    pattern: {
                         // eslint-disable-next-line max-len
-                        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                        value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                        message: 'incorrect email',
+                    },
                 })}
             />
-            {errors?.email && <p className="auth-error">{errors.email?.message || 'incorrect email'}</p>}
-
-            <TextField
-                id="outlined-basic-2"
+            <CssTextField
+                error={Boolean(errors.password)}
+                helperText={errors.password?.message}
+                id="outlined-basic-3"
                 label="Пароль"
                 variant="outlined"
                 type={showPassword ? 'text' : 'password'}
-                autoComplete="off"
                 required
-                style={{ margin: '10px 0px', width: '100%' }}
+                autoComplete="off"
                 InputProps={{
                     endAdornment: (
                         <InputAdornment position="end">
@@ -95,7 +100,6 @@ export const Authentication: React.FC = () => {
                     minLength: { value: 9, message: 'min length 9 symbol' },
                 })}
             />
-            {errors?.password && <p className="auth-error">{errors.password?.message || 'incorrect password'}</p>}
             {isErrorLogin || <p className="auth-error">такой email уже зарегистрирован</p>}
 
             <Button
@@ -103,14 +107,21 @@ export const Authentication: React.FC = () => {
                 type="submit"
                 disabled={!isValid || isWait}
                 color="primary"
-                style={{ margin: '20px 0px', width: '100%' }}
+                style={{
+                    margin: '20px 0px',
+                    width: '100%',
+                    fontSize: 22,
+                    fontWeight: 'bolder',
+                }}
             >
                 Зарегистрироваться
             </Button>
             <h3 style={{ textAlign: 'center' }}>
                 Уже есть аккаунт?
                 {'  '}
-                <Link to="/login">Войти</Link>
+                <Link to="/login" style={{ textDecoration: 'underline' }}>
+                    Войти
+                </Link>
             </h3>
         </form>
     );
